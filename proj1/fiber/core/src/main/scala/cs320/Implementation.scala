@@ -110,17 +110,16 @@ object Implementation extends Template {
     case Fun(parm, body) =>
       CloV(parm, body, env)
     case RecFuns(funs, body) =>
-      var dummyEnv: Env = Map()
-      val funEnv = funs.map(f => f.name -> internalInterp(Fun(f.parameters, f.body), dummyEnv))
-      dummyEnv = env ++ funEnv
-      internalInterp(body, dummyEnv)
+      val funEnv = funs.map(f => f.name -> CloV(f.parameters, f.body, env))
+      funEnv.foreach(f => {f._2.env = env ++ funEnv})
+      internalInterp(body, env ++ funEnv)
     case App(fun, arg) =>
       val CloV(parm, body, fenv) = asCloV(internalInterp(fun, env))
       if (parm.length != arg.length)
         error(s"Runtime Error: Function expected ${parm.length} arguments, found ${arg.length}")
       val argEnv = for ((p, a) <- parm.zip(arg)) yield (p -> internalInterp(a, env))
       internalInterp(body, fenv ++ argEnv)
-    case Test(expr, typ) => interp(expr) match {
+    case Test(expr, typ) => internalInterp(expr, env) match {
       case IntV(_) => BooleanV(typ == IntT)
       case BooleanV(_) => BooleanV(typ == BooleanT)
       case TupleV(_) => BooleanV(typ == TupleT)

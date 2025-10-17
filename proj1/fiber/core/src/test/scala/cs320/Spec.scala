@@ -5,7 +5,7 @@ import Macros._
 class Spec extends SpecBase {
 
   val run = Implementation.run _
-  /*
+
   test(run("(26 + 6)"), "32")
   test(run("(((q) => q)(26) + ((k) => k)(6))"), "32")
   test(run("(26 * 6)"), "156")
@@ -81,14 +81,30 @@ class Spec extends SpecBase {
   testExc(run("6()"), "")
   testExc(run("((i) => i)()"), "")
   testExc(run("((f) => f)(6, 26)"), "")
-  */
+
   test(run("""
   def fill(a, n) =
     if (n == 0) Nil
     else a :: fill(a, n - 1);
-  fill(1, 10)
+  def map(l, f) =
+    if (l.isEmpty) Nil
+    else f(l.head) :: map(l.tail, f);
+  def filter(l, p) =
+    if (l.isEmpty) Nil
+    else if (p(l.head)) l.head :: filter(l.tail, p)
+    else filter(l.tail, p);
+  def foldLeft(a, l, f) =
+    def aux(i, r) =
+      if (r.isEmpty) i
+      else aux(f(i, r.head), r.tail);
+    aux(a, l);
+  val l = fill(1, 10);
+  val l = foldLeft((6, Nil), l, (a, b) => (a._1 + b, a._1 + b :: a._2))._2;
+  val l = filter(l, x => x % 2 != 0);
+  val l = map(l, x => x * x);
+  foldLeft(0, l, (a, b) => a + b)
   """), "645")
-  /*
+
   test(run("""
   def isPrime(n) =
     def aux(m) =
@@ -105,6 +121,7 @@ class Spec extends SpecBase {
       aux(2);
   factorize(936)
   """), "(2 :: (2 :: (2 :: (3 :: (3 :: (13 :: Nil))))))")
+
   test(run("""
   def interp(e) =
     if (e.isInstanceOf[Int]) e
@@ -120,6 +137,7 @@ class Spec extends SpecBase {
     v1 - v2;
   interp(true :: (false :: 6 :: 26 :: Nil) :: 6 :: Nil)
   """), "-14")
+
   test(run("""
   def merge(l, r) =
     if (l.isEmpty) r
@@ -146,6 +164,7 @@ class Spec extends SpecBase {
       merge(mergeSort(as), mergeSort(bs));
   mergeSort(9 :: 10 :: 8 :: 7 :: 6 :: Nil)
   """), "(6 :: (7 :: (8 :: (9 :: (10 :: Nil)))))")
+
   test(run("""
   val emptyTree = 0;
   def makeNode(x, l, r) = (x, l, r);
@@ -176,6 +195,6 @@ class Spec extends SpecBase {
   val t = add(t, 30);
   flatten(t)
   """), "(6 :: (12 :: (18 :: (24 :: (30 :: Nil)))))")
-  */
+
   /* Write your own tests */
 }
