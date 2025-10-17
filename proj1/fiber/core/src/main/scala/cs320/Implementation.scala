@@ -13,28 +13,28 @@ object Implementation extends Template {
 
   def asIntV(value: Value): IntV = value match {
     case v: IntV => v
-    case _ => error(s"Runtime Error: Expected IntV, found: $value")
+    case _ => error(s"Runtime Error: Expected IntV")
   }
 
   def asBooleanV(value: Value): BooleanV = value match {
     case v: BooleanV => v
-    case _ => error(s"Runtime Error: Expected BooleanV, found: $value")
+    case _ => error(s"Runtime Error: Expected BooleanV")
   }
 
   def asTupleV(value: Value): TupleV = value match {
     case v: TupleV => v
-    case _ => error(s"Runtime Error: Expected TupleV, found: $value")
+    case _ => error(s"Runtime Error: Expected TupleV")
   }
 
   def asListV(value: Value): Value = value match {
-    case v @ NilV => v
-    case v @ ConsV(_, _) => v
-    case _ => error(s"Runtime Error: Expected ListV, found: $value")
+    case NilV => NilV
+    case v : ConsV => v
+    case _ => error(s"Runtime Error: Expected ListV")
   }
 
   def asCloV(value: Value): CloV = value match {
     case v: CloV => v
-    case _ => error(s"Runtime Error: Expected CloV, found: $value")
+    case _ => error(s"Runtime Error: Expected CloV")
   }
 
   def internalInterp(expr: Expr, env: Env): Value = expr match {
@@ -119,6 +119,7 @@ object Implementation extends Template {
         error(s"Runtime Error: Function expected ${parm.length} arguments, found ${arg.length}")
       val argEnv = for ((p, a) <- parm.zip(arg)) yield (p -> internalInterp(a, env))
       internalInterp(body, fenv ++ argEnv)
+
     case Test(expr, typ) => internalInterp(expr, env) match {
       case IntV(_) => BooleanV(typ == IntT)
       case BooleanV(_) => BooleanV(typ == BooleanT)
