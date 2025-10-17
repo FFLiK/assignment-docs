@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="macros [file:/D:/KAIST/수업/프로그래밍%20언어/assignment-docs/proj1/fiber/]" external.linked.project.path="$MODULE_DIR$/../../macros" external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" external.system.module.type="nestedProject" type="JAVA_MODULE" version="4">
+  <component name="DisplayModuleName">
+    <option name="name" value="macros" />
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_22">
+    <output url="file://$MODULE_DIR$/../../macros/target/scala-2.13/classes" />
+    <output-test url="file://$MODULE_DIR$/../../macros/target/scala-2.13/test-classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../macros">
+      <sourceFolder url="file://$MODULE_DIR$/../../macros/src/main/scala" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../macros/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="sbt: scala-sdk-2.13.16" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.16:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang:scala-reflect:2.13.16:jar" level="project" />
+  </component>
+</module>

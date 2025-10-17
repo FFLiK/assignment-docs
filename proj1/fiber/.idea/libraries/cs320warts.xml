@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="cs320warts">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/cs320warts.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

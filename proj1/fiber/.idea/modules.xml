@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fiber.iml" filepath="$PROJECT_DIR$/.idea/modules/fiber.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fiber.core.iml" filepath="$PROJECT_DIR$/.idea/modules/fiber.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fiber.fiber-build.iml" filepath="$PROJECT_DIR$/.idea/modules/fiber.fiber-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fiber.macros.iml" filepath="$PROJECT_DIR$/.idea/modules/fiber.macros.iml" />
+    </modules>
+  </component>
+</project>

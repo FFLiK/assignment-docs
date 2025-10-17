@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="sbt 1" modules="fiber_9189" />
+    <profile name="sbt 2" modules="fiber,fiber.macros">
+      <option name="deprecationWarnings" value="true" />
+      <option name="featureWarnings" value="true" />
+      <parameters>
+        <parameter value="-Xlint:unused" />
+      </parameters>
+      <plugins>
+        <plugin path="D:\KAIST\수업\프로그래밍 언어\assignment-docs\proj1\fiber\target\scala-2.13\compiler_plugins\wartremover_2.13.16-3.4.0.jar" />
+      </plugins>
+    </profile>
+    <profile name="sbt 3" modules="fiber.core">
+      <option name="deprecationWarnings" value="true" />
+      <option name="featureWarnings" value="true" />
+      <parameters>
+        <parameter value="-Xlint:unused" />
+        <parameter value="-P:wartremover:excluded:core\src\main\scala\package.scala" />
+        <parameter value="-P:wartremover:excluded:core\src\main\scala\cs320\Expr.scala" />
+        <parameter value="-P:wartremover:excluded:core\src\main\scala\cs320\Fuzzer.scala" />
+        <parameter value="-P:wartremover:excluded:core\src\main\scala\cs320\Main.scala" />
+        <parameter value="-P:wartremover:excluded:core\src\main\scala\cs320\Value.scala" />
+        <parameter value="-P:wartremover:traverser:org.wartremover.warts.AsInstanceOf" />
+        <parameter value="-P:wartremover:traverser:org.wartremover.warts.IsInstanceOf" />
+        <parameter value="-P:wartremover:traverser:org.wartremover.warts.Null" />
+        <parameter value="-P:wartremover:traverser:org.wartremover.warts.Return" />
+        <parameter value="-P:wartremover:traverser:org.wartremover.warts.Throw" />
+        <parameter value="-P:wartremover:traverser:org.wartremover.warts.Var" />
+        <parameter value="-P:wartremover:traverser:org.wartremover.warts.While" />
+        <parameter value="-P:wartremover:traverser:cs320warts.MutableDataStructures" />
+        <parameter value="-P:wartremover:traverser:cs320warts.TryCatch" />
+        <parameter value="-P:wartremover:cp:file://D:\KAIST\수업\프로그래밍 언어\assignment-docs\proj1\fiber\core/../lib/cs320warts.jar" />
+      </parameters>
+      <plugins>
+        <plugin path="D:\KAIST\수업\프로그래밍 언어\assignment-docs\proj1\fiber\target\scala-2.13\compiler_plugins\wartremover_2.13.16-3.4.0.jar" />
+      </plugins>
+    </profile>
+  </component>
+</project>
